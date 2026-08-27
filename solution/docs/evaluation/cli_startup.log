@@ -1,0 +1,57 @@
+/Users/73983/ws/grabe/ai-data-mgmt-nd700-c3-cd13874-project/solution/.venv/lib/python3.12/site-packages/langgraph/checkpoint/base/__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+Connecting to Azure for authentication.
+
+                                   /\
+                                  /  \
+                                 /____\
+                ________________/______\_______________________
+               /                                               \
+              /_________________________________________________\
+             |   ____      ____      ____      ____      ____   |
+             |  | ▇▇ |    | ▇▇ |    | ▇▇ |    | ▇▇ |    | ▇▇ |  |
+             |  | ▇▇ |    | ▇▇ |    | ▇▇ |    | ▇▇ |    | ▇▇ |  |
+             |  |____|    |____|    |____|    |____|    |____|  |
+             |                                                  |
+             |        NEIGHBORHOOD INSIGHTS & DATA ASSISTANT    |
+             |__________________________________________________|
+    
+
+ This AI-powered assistant provides automatically generated responses. Please use discretion, as answers may contain inaccuracies or errors.
+
+Data comes from a structured demographics database, permit documents in NoSQL, images stored in Azure, and environmental sensor readings.
+Data remains in its original systems and is not copied into the assistant.
+Embeddings and other AI artifacts are generated at runtime and are not permanently stored.
+
+Loading Structured Data Agent
+-------------------------------
+
+Loading Unstructured Data Agent
+---------------------------------
+/Users/73983/ws/grabe/ai-data-mgmt-nd700-c3-cd13874-project/solution/agents/unstructured_data_agent.py:54: UserWarning: You appear to be connected to a CosmosDB cluster. For more information regarding feature compatibility and support please visit https://www.mongodb.com/supportability/cosmosdb
+  self.mongo_client = MongoClient(mongo_uri)
+Loading documents from MongoDB...
+Embedding 21 documents...
+Vector index built.
+Vector DB size: 21
+
+Loading Multimodal Data Agent
+-------------------------------
+
+Loading Time-Series Data Agent
+-------------------------------
+
+
+--------------------------------
+
+ Agent Chat Ready.
+
+Here are some examples of questions you can ask:
+  - Which demographic group has the most expensive homes?
+  - Was a permit approved for a restaurant in any of the neighborhoods?
+  - Find me a house like mine
+  - Are there any unusual air quality readings in Maplewood?
+
+ Type 'exit' to quit.
+
+You: 

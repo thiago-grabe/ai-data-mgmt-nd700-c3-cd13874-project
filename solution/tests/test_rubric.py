@@ -916,6 +916,23 @@ def test_R5_1_every_evaluation_prompt_routes_where_intended(manager):
         )
 
 
+def test_R2_3_cli_startup_transcript_is_clean():
+    """R2.3 evidence. The mocked suite cannot prove the real CLI starts.
+
+    tests/ patches every agent constructor, so all 61 tests stay green even when
+    `python chat.py` dies on startup — which it did, when a PostgreSQL firewall
+    rule went stale. scripts/smoke_cli.sh runs the real thing; this asserts on
+    its committed transcript.
+    """
+    log = EVIDENCE / "cli_startup.log"
+    if not log.exists():
+        pytest.skip("run scripts/smoke_cli.sh to produce the startup transcript")
+    text = log.read_text()
+    assert "Agent Chat Ready" in text
+    assert "Traceback" not in text
+    assert len(re.findall(r"^Loading .* Data Agent", text, re.MULTILINE)) == 4
+
+
 @pytest.mark.skipif(not _transcripts(), reason="no evaluation transcripts yet")
 def test_R5_2_structured_transcripts_show_fairlearn_output():
     text = "\n".join(p.read_text() for p in EVIDENCE.glob("structured-*.log"))

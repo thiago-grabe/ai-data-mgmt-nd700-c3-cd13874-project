@@ -105,11 +105,13 @@ Four things worth knowing, each of which cost time to discover:
 - **The firewall flags are `-s` (server) and `-n` (rule name).** Passing the
   server name to `-n` fails with "unrecognized arguments", which a `|| true` will
   happily hide.
-- **Different IP-echo services can disagree.** On a proxied network,
-  `api.ipify.org` reported `177.39.124.219` while traffic to Azure actually
-  arrived from `147.161.129.5`. The firewall rule looked correct and `psql` timed
-  out anyway. The script now allows every address the echo services report and
-  probes port 5432 afterwards to prove the rule works.
+- **Different IP-echo services can disagree, and the address rotates.** On a
+  proxied network `api.ipify.org` reported `177.39.124.219` while traffic to Azure
+  actually arrived from `147.161.129.5` — the firewall rule looked correct and
+  `psql` timed out anyway. Worse, the proxy draws from a pool: an hour later the
+  same machine egressed from `147.161.129.1` and a rule pinned to `.5` started
+  failing again. **Allow the /24 containing each detected address**, not the single
+  IP. The script does this and probes port 5432 afterwards to prove it worked.
 - **TLS is mandatory.** Flexible Server runs with `require_secure_transport=ON`,
   so the connection URI needs `?sslmode=require`.
 
@@ -237,7 +239,7 @@ mid-demo. **As of this run it returns HTTP 200**, so no code change was needed.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| `psycopg.OperationalError: connection timed out` | Firewall allows the wrong IP — echo services disagree behind a proxy | `curl -4 https://ifconfig.me/ip`, add that address as a firewall rule |
+| `psycopg.OperationalError: connection timed out` | Firewall allows the wrong IP, or the proxy's egress address rotated out of a single-IP rule | `curl -4 https://ifconfig.me/ip`, then allow that whole /24, not the single address |
 | `ModuleNotFoundError: psycopg2` | URI used `postgresql://` instead of `postgresql+psycopg://` | `requirements.txt` installs psycopg **3** |
 | `connection is insecure` from PostgreSQL | Missing `?sslmode=require` | Flexible Server sets `require_secure_transport=ON` |
 | `Retryable writes are not supported` | pymongo default vs Cosmos RU | Ensure `retrywrites=false` in the connection string |

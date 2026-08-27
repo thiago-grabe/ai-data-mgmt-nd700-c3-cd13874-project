@@ -187,6 +187,22 @@ neither is obvious: `requirements.txt` ships `psycopg[binary]` (v3), so a bare
   `test_R4_6_provided_data_folders_are_unchanged`.
 - **`scripts/`, `tests/`, `evaluate.py`, `verify_deliverables.py`, `docs/`.**
 
+## Operational findings
+
+### 14. PostgreSQL firewall rules must cover the proxy's /24, not one address
+
+`python chat.py` — the literal wording of rubric R2.3 — crashed on startup with a
+`psycopg.OperationalError` timeout while all 61 unit tests stayed green. The cause
+was not code: the network egresses through a proxy pool, and the address had
+rotated from `147.161.129.5` (allowed at provisioning time) to `147.161.129.1`
+(not allowed). Provisioning now allows the /24 containing each detected address.
+
+The more useful lesson is about the test suite. `tests/` patches every agent
+constructor, so it can prove the orchestration is correct but *cannot* prove the
+real agents can reach their data stores. `scripts/smoke_cli.sh` closes that gap by
+starting the actual CLI against live Azure and asserting a clean exit with all
+four agents loaded; its transcript is committed as `docs/evaluation/cli_startup.log`.
+
 ## Not changed, deliberately
 
 - The `var = retrieved_secret = client.get_secret(...)` idiom in `chat.py`. It is

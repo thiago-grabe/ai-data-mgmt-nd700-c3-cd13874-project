@@ -235,14 +235,20 @@ CLIENT_IPS=$(
 
 # The flags are -s (server) and -n (RULE name). Passing the server to -n makes the
 # call fail with "unrecognized arguments", which a `|| true` would hide.
+# A single-IP rule is wrong on a proxied network: the egress address rotates
+# within the proxy's pool. Observed here as 147.161.129.5 at provisioning time and
+# 147.161.129.1 an hour later, so a /24-pinned rule kept timing out. Allow the /24
+# containing each detected address instead.
 idx=0
 while read -r ip; do
   [[ -z "$ip" ]] && continue
   idx=$((idx + 1))
+  subnet="${ip%.*}"
   az postgres flexible-server firewall-rule create -g "$RG" -s "$PG_SERVER" \
-    -n "allow-client-$idx" --start-ip-address "$ip" --end-ip-address "$ip" -o none \
-    || warn "could not add firewall rule for $ip"
-  info "allowed $ip"
+    -n "allow-client-$idx" \
+    --start-ip-address "${subnet}.0" --end-ip-address "${subnet}.255" -o none \
+    || warn "could not add firewall rule for ${subnet}.0/24"
+  info "allowed ${subnet}.0/24 (detected $ip)"
 done <<< "$CLIENT_IPS"
 
 az postgres flexible-server firewall-rule create -g "$RG" -s "$PG_SERVER" \

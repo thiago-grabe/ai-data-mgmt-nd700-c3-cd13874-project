@@ -177,6 +177,25 @@ def _safeguard_evidence():
 check("Ethical-check output captured for every agent", _safeguard_evidence)
 
 
+def _cli_starts():
+    """R2.3 — the offline suite cannot cover this; it patches the agent constructors."""
+    log = EVIDENCE / "cli_startup.log"
+    if not log.exists():
+        raise AssertionError("no cli_startup.log; run scripts/smoke_cli.sh")
+    text = log.read_text()
+    if "Agent Chat Ready" not in text:
+        raise AssertionError("chat.py did not reach the ready banner")
+    if "Traceback" in text:
+        raise AssertionError("chat.py raised during startup")
+    loaded = len(re.findall(r"^Loading .* Data Agent", text, re.MULTILINE))
+    if loaded != 4:
+        raise AssertionError(f"expected 4 agents to load, transcript shows {loaded}")
+    return "chat.py loads 4 agents and reaches the prompt"
+
+
+check("chat.py starts against live Azure", _cli_starts)
+
+
 def _figures():
     pngs = list(EVIDENCE.glob("*.png"))
     if not pngs:
