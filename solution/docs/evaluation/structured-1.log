@@ -1,0 +1,243 @@
+================================================================================
+PROMPT: Which demographic group has the most expensive homes?
+EXPECTED ROUTE: structured
+================================================================================
+[Router] Selected agent: structured (via llm)
+
+================================================================================
+Using Strucutred Data stored in PostgresQL database to answer question
+Performing a Fairness audit before providing answer
+================================================================================
+
+----------------------------------------------------------------------
+TABLE: neighborhood_houses
+DEMOGRAPHIC COLUMN: identified_race
+----------------------------------------------------------------------
+
+Analyzing column: id
+Type: Numeric (distribution fairness)
+
+Mean by group:
+identified_race
+Asian       2857.479964
+Black       2845.080340
+Hispanic    2753.215722
+Other       2731.419680
+White       2667.145911
+Name: id, dtype: float64
+Mean ratio (min/max): 0.933
+No major disparity
+
+Analyzing column: house_number
+Type: Numeric (distribution fairness)
+
+Mean by group:
+identified_race
+Asian       2857.479964
+Black       2845.080340
+Hispanic    2753.215722
+Other       2731.419680
+White       2667.145911
+Name: house_number, dtype: float64
+Mean ratio (min/max): 0.933
+No major disparity
+
+Analyzing column: neighborhood
+Type: Categorical (distribution comparison)
+
+Percentage distribution by group:
+neighborhood     Ashford  Huntington  Kingsley  Maplewood  Rosedale
+identified_race                                                    
+Asian              14.78       20.93     19.95      24.49     19.86
+Black              14.74       20.23     19.09      24.20     21.74
+Hispanic           14.81       19.10     20.02      27.42     18.65
+Other              14.89       21.03     19.34      24.98     19.76
+White              14.31       17.75     20.91      26.49     20.54
+
+Analyzing column: household_income
+Type: Numeric (distribution fairness)
+
+Mean by group:
+identified_race
+Asian       140459.620659
+Black       139900.642722
+Hispanic    141870.096892
+Other       134645.841884
+White       139378.630112
+Name: household_income, dtype: float64
+Mean ratio (min/max): 0.949
+No major disparity
+
+Analyzing column: house_size_sqf
+Type: Numeric (distribution fairness)
+
+Mean by group:
+identified_race
+Asian       2879.314337
+Black       2854.746692
+Hispanic    2876.762340
+Other       2861.952061
+White       2895.314126
+Name: house_size_sqf, dtype: float64
+Mean ratio (min/max): 0.986
+No major disparity
+
+Analyzing column: house_market_value
+Type: Numeric (distribution fairness)
+
+Mean by group:
+identified_race
+Asian       813941.445236
+Black       800168.930057
+Hispanic    782294.106947
+Other       808920.538267
+White       798496.228625
+Name: house_market_value, dtype: float64
+Mean ratio (min/max): 0.961
+No major disparity
+
+Analyzing column: family_size
+Type: Numeric (distribution fairness)
+
+Mean by group:
+identified_race
+Asian       4.027605
+Black       4.155955
+Hispanic    4.106033
+Other       3.989066
+White       4.094796
+Name: family_size, dtype: float64
+Mean ratio (min/max): 0.960
+No major disparity
+
+Analyzing column: swimming_pool
+Type: Binary (classification fairness)
+Positive label: True
+
+Selection Rate by Group:
+                 selection_rate
+identified_race                
+Asian                  0.196794
+Black                  0.213611
+Hispanic               0.209324
+Other                  0.184188
+White                  0.211896
+Demographic Parity Difference: 0.0294
+Within fairness threshold
+
+Analyzing column: ownership
+Type: Binary (classification fairness)
+Positive label: 'Own'
+
+Selection Rate by Group:
+                 selection_rate
+identified_race                
+Asian                  0.713268
+Black                  0.697543
+Hispanic               0.738574
+Other                  0.708999
+White                  0.688662
+Demographic Parity Difference: 0.0499
+Within fairness threshold
+
+----------------------------------------------------------------------
+TABLE: education_survey
+DEMOGRAPHIC COLUMN: gender
+----------------------------------------------------------------------
+
+Analyzing column: id
+Type: Numeric (distribution fairness)
+
+Mean by group:
+gender
+Female    1297.723618
+Male      1291.384373
+Other     1208.605042
+Name: id, dtype: float64
+Mean ratio (min/max): 0.931
+No major disparity
+
+Analyzing column: neighborhood
+Type: Categorical (distribution comparison)
+
+Percentage distribution by group:
+neighborhood  Ashford  Huntington  Kingsley  Maplewood  Rosedale
+gender                                                          
+Female          19.10       20.69     19.77      19.60     20.85
+Male            18.23       19.89     20.76      20.92     20.21
+Other           15.13       29.41     23.53      21.85     10.08
+
+Analyzing column: education_level
+Type: Categorical (distribution comparison)
+
+Percentage distribution by group:
+education_level  Bachelors   None  Postgraduate  Technical
+gender                                                    
+Female               38.61  10.64         21.02      29.73
+Male                 40.96  10.34         18.23      30.47
+Other                42.86  10.92         19.33      26.89
+
+Analyzing column: employment_status
+Type: Categorical (distribution comparison)
+
+Percentage distribution by group:
+employment_status  Full-time  Part-time  Retired  Unemployed
+gender                                                      
+Female                 50.92      19.77    14.49       14.82
+Male                   51.30      18.63    14.36       15.71
+Other                  49.58      17.65    16.81       15.97
+
+Analyzing column: age
+Type: Numeric (distribution fairness)
+
+Mean by group:
+gender
+Female    49.260469
+Male      48.823204
+Other     51.974790
+Name: age, dtype: float64
+Mean ratio (min/max): 0.939
+No major disparity
+
+Analyzing column: years_of_experience
+Type: Numeric (distribution fairness)
+
+Mean by group:
+gender
+Female    11.389447
+Male      10.603788
+Other     11.420168
+Name: years_of_experience, dtype: float64
+Mean ratio (min/max): 0.929
+No major disparity
+
+Analyzing column: annual_income
+Type: Numeric (distribution fairness)
+
+Mean by group:
+gender
+Female    46384.345059
+Male      45943.429361
+Other     46221.537815
+Name: annual_income, dtype: float64
+Mean ratio (min/max): 0.990
+No major disparity
+
+Analyzing column: household_size
+Type: Numeric (distribution fairness)
+
+Mean by group:
+gender
+Female    3.995812
+Male      4.038674
+Other     3.983193
+Name: household_size, dtype: float64
+Mean ratio (min/max): 0.986
+No major disparity
+
+--------------------------------------------------------------------------------
+ANSWER
+--------------------------------------------------------------------------------
+The demographic group with the most expensive homes is the Asian group, with an average house market value of approximately $813,941.45.
+
+[completed in 19.4s]

@@ -1,0 +1,35 @@
+================================================================================
+PROMPT: What is the average noise level per neighborhood?
+EXPECTED ROUTE: timeseries
+================================================================================
+[Router] Selected agent: timeseries (via llm)
+
+================================================================================
+Using Time-Series Data stored in Azure Table Storage to answer question
+Running anomaly detection before providing answer
+================================================================================
+Readings analysed: 1680 across 5 series
+Anomaly rule: |z| >= 3.0 against the series mean
+
+WARNING: 1 anomalous reading(s) detected:
+- Ashford noise level: 84.01 dB at 2026-03-07T06:00:00Z (sensor ASH-ENV-01, z=+7.85, series mean 44.17)
+
+
+--------------------------------------------------------------------------------
+ANSWER
+--------------------------------------------------------------------------------
+[Reliability notice] Anomaly detection flagged readings that may distort any statistic computed over this window:
+  - Ashford noise level 84.01 dB at 2026-03-07T06:00:00Z (z=+7.85)
+  These are included in the figures below. Treat means over the affected series as provisional until the sensors are checked.
+
+The average noise levels per neighborhood, based on the provided means, are:
+
+- Ashford: 44.17 dB (mean)
+- Huntington: 47.84 dB (mean)
+- Kingsley: 46.00 dB (mean)
+- Maplewood: 56.80 dB (mean)
+- Rosedale: 45.05 dB (mean)
+
+Note: An anomalous reading was detected in Ashford (84.01 dB, z=+7.85), which may be affecting the average noise level reported for that neighborhood.
+
+[completed in 4.3s]

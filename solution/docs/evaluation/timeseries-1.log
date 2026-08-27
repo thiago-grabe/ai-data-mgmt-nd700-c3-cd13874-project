@@ -1,0 +1,31 @@
+================================================================================
+PROMPT: Are there any unusual air quality readings in Maplewood?
+EXPECTED ROUTE: timeseries
+================================================================================
+[Router] Selected agent: timeseries (via llm)
+
+================================================================================
+Using Time-Series Data stored in Azure Table Storage to answer question
+Running anomaly detection before providing answer
+================================================================================
+Readings analysed: 336 across 1 series
+Anomaly rule: |z| >= 3.0 against the series mean
+
+WARNING: 3 anomalous reading(s) detected:
+- Maplewood air quality (PM2.5): 126.37 µg/m³ at 2026-03-04T06:00:00Z (sensor MAP-ENV-01, z=+13.00, series mean 16.84)
+- Maplewood air quality (PM2.5): 82.54 µg/m³ at 2026-03-09T09:00:00Z (sensor MAP-ENV-01, z=+7.80, series mean 16.84)
+- Maplewood air quality (PM2.5): 79.08 µg/m³ at 2026-03-04T07:00:00Z (sensor MAP-ENV-02, z=+7.39, series mean 16.84)
+
+
+--------------------------------------------------------------------------------
+ANSWER
+--------------------------------------------------------------------------------
+[Reliability notice] Anomaly detection flagged readings that may distort any statistic computed over this window:
+  - Maplewood air quality (PM2.5) 126.37 µg/m³ at 2026-03-04T06:00:00Z (z=+13.00)
+  - Maplewood air quality (PM2.5) 82.54 µg/m³ at 2026-03-09T09:00:00Z (z=+7.80)
+  - Maplewood air quality (PM2.5) 79.08 µg/m³ at 2026-03-04T07:00:00Z (z=+7.39)
+  These are included in the figures below. Treat means over the affected series as provisional until the sensors are checked.
+
+Yes, there are unusual air quality readings in Maplewood. Three anomalous pm25 readings were detected: 126.37 µg/m³ (z=+13.00), 82.54 µg/m³ (z=+7.80), and 79.08 µg/m³ (z=+7.39). These values are significantly higher than the mean of 16.84 µg/m³ and may be affecting the overall statistics.
+
+[completed in 4.8s]

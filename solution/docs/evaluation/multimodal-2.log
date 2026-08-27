@@ -1,0 +1,174 @@
+================================================================================
+PROMPT: Show me houses similar to my house
+EXPECTED ROUTE: multimodal
+================================================================================
+[Router] Selected agent: multimodal (via llm)
+
+================================================================================
+Screening query image before search: query-house-2.jpg
+================================================================================
+Analyzing Blob Image: query-house-2.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: query-house-2.jpg
+
+
+================================================================================
+Using Multimodal (Image files) Data stored in Azure Data Blob to answer question
+Scan images for harmful contente
+================================================================================
+Blob count: 12
+126_Briarwood_Drive_Ashford.jpg
+
+================================================================================
+Analysing image: 126_Briarwood_Drive_Ashford.jpg
+Analyzing Blob Image: 126_Briarwood_Drive_Ashford.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 2
+Warning: Harmful content detected in blob image: 126_Briarwood_Drive_Ashford.jpg
+
+Excluding 126_Briarwood_Drive_Ashford.jpg from results: flagged by content safety.
+12_Kingsley_Drive.jpg
+
+================================================================================
+Analysing image: 12_Kingsley_Drive.jpg
+Analyzing Blob Image: 12_Kingsley_Drive.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 12_Kingsley_Drive.jpg
+
+15_Rosedale_Avenue.jpg
+
+================================================================================
+Analysing image: 15_Rosedale_Avenue.jpg
+Analyzing Blob Image: 15_Rosedale_Avenue.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 15_Rosedale_Avenue.jpg
+
+203_Hillcrest_Lane_Kingsley.jpg
+
+================================================================================
+Analysing image: 203_Hillcrest_Lane_Kingsley.jpg
+Analyzing Blob Image: 203_Hillcrest_Lane_Kingsley.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 203_Hillcrest_Lane_Kingsley.jpg
+
+274_Maplewood_Crescent.jpg
+
+================================================================================
+Analysing image: 274_Maplewood_Crescent.jpg
+  (downscaled 2268x1676 -> 2048x1513 for content safety)
+Analyzing Blob Image: 274_Maplewood_Crescent.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 274_Maplewood_Crescent.jpg
+
+33_Maplewood_Lane.jpg
+
+================================================================================
+Analysing image: 33_Maplewood_Lane.jpg
+Analyzing Blob Image: 33_Maplewood_Lane.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 33_Maplewood_Lane.jpg
+
+402_Rosedale_Parkway.jpg
+
+================================================================================
+Analysing image: 402_Rosedale_Parkway.jpg
+Analyzing Blob Image: 402_Rosedale_Parkway.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 402_Rosedale_Parkway.jpg
+
+48_Oakridge_Court_Kingsley.jpg
+
+================================================================================
+Analysing image: 48_Oakridge_Court_Kingsley.jpg
+Analyzing Blob Image: 48_Oakridge_Court_Kingsley.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 48_Oakridge_Court_Kingsley.jpg
+
+510_West_Maplewood_Road.jpg
+
+================================================================================
+Analysing image: 510_West_Maplewood_Road.jpg
+Analyzing Blob Image: 510_West_Maplewood_Road.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 510_West_Maplewood_Road.jpg
+
+77_Maple_Ridge_Road_Rosedale.jpg
+
+================================================================================
+Analysing image: 77_Maple_Ridge_Road_Rosedale.jpg
+Analyzing Blob Image: 77_Maple_Ridge_Road_Rosedale.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 77_Maple_Ridge_Road_Rosedale.jpg
+
+82_Kingsley_Park_Drive.jpg
+
+================================================================================
+Analysing image: 82_Kingsley_Park_Drive.jpg
+Analyzing Blob Image: 82_Kingsley_Park_Drive.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 82_Kingsley_Park_Drive.jpg
+
+9_Ashford_Terrace.jpg
+
+================================================================================
+Analysing image: 9_Ashford_Terrace.jpg
+Analyzing Blob Image: 9_Ashford_Terrace.jpg
+Hate 0
+SelfHarm 0
+Sexual 0
+Violence 0
+No harmful content detected in blob image: 9_Ashford_Terrace.jpg
+
+
+Top matches:
+274 Maplewood Crescent | similarity: 0.9335
+82 Kingsley Park Drive | similarity: 0.7118
+9 Ashford Terrace | similarity: 0.6826
+[evidence] figure saved: /Users/73983/ws/grabe/ai-data-mgmt-nd700-c3-cd13874-project/solution/docs/evaluation/multimodal_matches_2.png
+
+--------------------------------------------------------------------------------
+ANSWER
+--------------------------------------------------------------------------------
+Here are the top similar houses I found (query image: query-house-2.jpg):
+- 274 Maplewood Crescent (similarity: 0.9335)
+- 82 Kingsley Park Drive (similarity: 0.7118)
+- 9 Ashford Terrace (similarity: 0.6826)
+
+1 image(s) were excluded by Azure AI Content Safety.
+
+[completed in 17.3s]
