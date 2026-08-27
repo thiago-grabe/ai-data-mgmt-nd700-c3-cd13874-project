@@ -191,7 +191,7 @@ The lab subscription bills continuously for the PostgreSQL server.
 
 ## Built With
 
-* [Semantic-free LangChain + LangGraph](https://python.langchain.com) — SQL toolkit and the ReAct agent
+* [LangChain + LangGraph](https://python.langchain.com) — SQL toolkit and the ReAct agent
 * [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) — `gpt-4.1-mini`, `text-embedding-ada-002`
 * [Fairlearn](https://fairlearn.org) — demographic parity and selection-rate metrics
 * [Presidio](https://microsoft.github.io/presidio/) — PII detection

@@ -62,6 +62,7 @@ REQUIRED = [
     "scripts/seed_data.sh",
     "scripts/verify_azure.py",
     "scripts/teardown_azure.sh",
+    "scripts/smoke_cli.sh",
     "tests/test_rubric.py",
     "tests/conftest.py",
 ]
