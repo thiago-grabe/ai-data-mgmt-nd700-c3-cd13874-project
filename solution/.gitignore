@@ -1,0 +1,21 @@
+# Virtualenv / build
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local credentials — never commit
+.env
+.pg_password
+
+# Runtime caches
+data/chroma_db_storage/
+
+# macOS
+.DS_Store
+
+# The repo root .gitignore has a blanket *.log. The evaluation transcripts and the
+# audit trail are primary rubric evidence, so they are explicitly un-ignored here.
+!docs/evaluation/*.log
+!logs/audit_log.jsonl

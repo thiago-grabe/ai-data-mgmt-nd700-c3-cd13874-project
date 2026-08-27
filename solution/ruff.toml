@@ -1,0 +1,25 @@
+# Lint configuration. The project inherits a broad rule set; these exclusions are
+# deliberate and each has a reason.
+
+exclude = [".venv", "__pycache__", "data/chroma_db_storage"]
+
+[lint]
+ignore = [
+    # Broad `except Exception` is intentional at resilience boundaries: the
+    # verification probes, the LLM router's fallback, the evaluation harness, and
+    # the per-blob loop in find_similar all must survive one failure and carry on
+    # reporting. Each one logs what it caught.
+    "BLE001",
+]
+
+[lint.per-file-ignores]
+# tls_trust.enable() MUST run before any HTTPS connection is opened, so the
+# module-level call deliberately sits between imports.
+"chat.py" = ["E402"]
+"evaluate.py" = ["E402"]
+# Course-provided loader. Its bare `except: pass` inside infer_type() is shipped
+# code, preserved verbatim so the diff against starter/ stays honest.
+"data/structured_load_azure.py" = ["E722", "S110"]
+# The isolation probe asserts that a cross-store read FAILS, so swallowing the
+# expected exception is the assertion itself.
+"scripts/verify_azure.py" = ["S110"]

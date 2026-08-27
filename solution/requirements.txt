@@ -1,0 +1,48 @@
+# Azure services
+azure-identity
+azure-keyvault-secrets
+azure-storage-blob
+azure-ai-contentsafety
+
+# Database drivers
+pymongo
+psycopg[binary]
+sqlalchemy
+
+# LangChain ecosystem
+langchain-community
+langchain-openai
+langchain-chroma
+langgraph
+
+# ML & embeddings
+torch
+transformers
+
+# Ethical safeguards
+fairlearn
+presidio-analyzer
+
+# Data & visualization
+pandas
+numpy
+matplotlib
+Pillow
+
+# ---------------------------------------------------------------------------
+# Additions beyond the list the course ships. Both are required for code that
+# was already shipped to run at all — see docs/DEVIATIONS.md.
+# ---------------------------------------------------------------------------
+
+# data/unstructured_load_azure.py imports a PDF reader that the course
+# requirements.txt omits entirely, so the loader dies on import as shipped.
+pypdf
+
+# The time-series (fourth) agent's data store.
+azure-data-tables
+
+# presidio-analyzer's default NlpEngine loads spaCy's en_core_web_lg model.
+# AnalyzerEngine() raises OSError [E050] without it, and the model is published
+# as a GitHub release rather than on PyPI. Pinned by URL so a clean-room install
+# is reproducible instead of depending on a separate `spacy download` step.
+en_core_web_lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
