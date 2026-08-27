@@ -1,0 +1,59 @@
+================================================================================
+PROMPT: Show me all the permits for pools in each neighborhood
+EXPECTED ROUTE: unstructured
+================================================================================
+[Router] Selected agent: unstructured (via llm)
+
+================================================================================
+Using Unstrucutred Data stored in MongoDB database to answer question
+Seraching for PII data in source documents
+================================================================================
+
+WARNING: PII detected:
+- EMAIL_ADDRESS: 'taylor.jennings@example.com' (confidence=1.00)
+- EMAIL_ADDRESS: 'morgan.ellis@example.com' (confidence=1.00)
+- EMAIL_ADDRESS: 'dakota.reyes@example.com' (confidence=1.00)
+- DATE_TIME: 'July 9' (confidence=0.85)
+- DATE_TIME: 'January 9' (confidence=0.85)
+- LOCATION: 'Maplewood Crest Drive' (confidence=0.85)
+- PERSON: 'Taylor Jennings\n• Mailing Address' (confidence=0.85)
+- PERSON: 'Brian Keller•' (confidence=0.85)
+- PERSON: 'Veriﬁed' (confidence=0.85)
+- DATE_TIME: '8:00 AM' (confidence=0.85)
+- DATE_TIME: '6:00' (confidence=0.85)
+- DATE_TIME: 'Saturdays' (confidence=0.85)
+- DATE_TIME: '9:00 AM' (confidence=0.85)
+- PERSON: 'Dana Whitﬁeld\nTitle:' (confidence=0.85)
+- DATE_TIME: 'February 16' (confidence=0.85)
+- DATE_TIME: 'August 16' (confidence=0.85)
+- PERSON: 'Daniel Reeves•' (confidence=0.85)
+- DATE_TIME: 'regulations.\n2.Construction hours' (confidence=0.85)
+- DATE_TIME: '9:00 AM – 4:00' (confidence=0.85)
+- DATE_TIME: 'Sundays' (confidence=0.85)
+- DATE_TIME: 'at least 48 hours' (confidence=0.85)
+- LOCATION: 'advance.\n7' (confidence=0.85)
+- PERSON: 'Lillian Carter\nTitle:' (confidence=0.85)
+- PERSON: 'Victor Lane•' (confidence=0.85)
+- DATE_TIME: '4:00' (confidence=0.85)
+
+
+
+--------------------------------------------------------------------------------
+ANSWER
+--------------------------------------------------------------------------------
+**Maplewood Neighborhood:**
+- Permit Number: MPW-CNST-POOL-2013-1184  
+  Address: 4027 [REDACTED LOCATION]: [REDACTED PERSON]  
+  Issue Date: [REDACTED DATE_TIME]Expiration: [REDACTED DATE_TIME]  
+
+**Rosedale Neighborhood:**
+- Permit Number: RSD-CNST-POOL-2026-1183  
+  Address: 7420 Rosedale Park Bend  
+  Owner: Morgan Ellis  
+  Issue Date: [REDACTED DATE_TIME]Expiration: [REDACTED DATE_TIME]  
+
+- Permit Number: RSD-CNST-POOL-2026-4472  
+  Address: 5530 Rosedale Meadow Court  
+  Owner: [REDACTED PERSON] Date: [REDACTED DATE_TIME]Expiration: [REDACTED DATE_TIME]
+
+[completed in 4.6s]

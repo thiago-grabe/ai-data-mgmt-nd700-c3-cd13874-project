@@ -1,0 +1,29 @@
+# Version constraints. Every pin here exists for a stated reason; nothing is
+# pinned for tidiness. Apply with:
+#     uv pip install -r requirements.txt -c constraints.txt
+
+# multimodal_data_agent.py passes raw bytes: ImageData(content=image_bytes).
+# In 1.0.0 (GA) the field is declared rest_field(format="base64") so the SDK
+# encodes for you and raw bytes are correct. In 1.0.0b1 `content` was typed str
+# and required a manual base64.b64encode(...).decode(). requirements.txt is
+# unpinned, so without this the resolver could land on the beta and every image
+# analysis would fail at runtime.
+azure-ai-contentsafety==1.0.0
+
+# transformers 5.x is a major release that reworked the processor surface.
+# CLIPProcessor / CLIPModel.get_image_features as the starter calls them are
+# only well-established on 4.x.
+transformers>=4.44,<5
+
+# spacy must match the en_core_web_lg 3.8.0 model wheel pinned in requirements.
+spacy>=3.8,<3.9
+
+# chromadb <1.0 depends on chroma-hnswlib, a C++ extension with patchy wheel
+# coverage on newer interpreters; 1.x ships the Rust core with abi3 wheels.
+chromadb>=1.0
+
+# create_react_agent is being migrated out of langgraph.prebuilt.
+langgraph>=0.3,<0.7
+
+# fairlearn / pandas interop.
+numpy>=1.26,<3

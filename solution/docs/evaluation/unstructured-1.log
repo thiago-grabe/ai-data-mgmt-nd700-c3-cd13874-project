@@ -1,0 +1,56 @@
+================================================================================
+PROMPT: Was a permit approved for a restaurant in any of the neighborhoods?
+EXPECTED ROUTE: unstructured
+================================================================================
+[Router] Selected agent: unstructured (via llm)
+
+================================================================================
+Using Unstrucutred Data stored in MongoDB database to answer question
+Seraching for PII data in source documents
+================================================================================
+
+WARNING: PII detected:
+- EMAIL_ADDRESS: 'thanley@hqsp-dev.com' (confidence=1.00)
+- EMAIL_ADDRESS: 'lmontrose@mcc-devgroup.com' (confidence=1.00)
+- EMAIL_ADDRESS: 'hwinslow@ashford-gov.org' (confidence=1.00)
+- EMAIL_ADDRESS: 'mhalden@hcv-projects.com' (confidence=1.00)
+- EMAIL_ADDRESS: 'emerriweather@larkspur-gov.org' (confidence=1.00)
+- NRP: 'MW‑FFR‑2021‑302.pdf' (confidence=0.85)
+- DATE_TIME: 'November 9' (confidence=0.85)
+- PERSON: 'Hanley QuickServe Properties' (confidence=0.85)
+- PERSON: 'Briarcrest Hollow' (confidence=0.85)
+- LOCATION: 'Redﬁeld' (confidence=0.85)
+- LOCATION: 'Trafﬁc' (confidence=0.85)
+- DATE_TIME: 'October 4' (confidence=0.85)
+- DATE_TIME: 'followed.\n5.Construction hours' (confidence=0.85)
+- DATE_TIME: '7:00 AM – 6:00 PM' (confidence=0.85)
+- DATE_TIME: 'Monday' (confidence=0.85)
+- PERSON: 'M. Callister  ' (confidence=0.85)
+- DATE_TIME: 'June 24' (confidence=0.85)
+- PERSON: 'Lydia R. Montrose\n• Company/Developer' (confidence=0.85)
+- LOCATION: 'Willowcrest Bend' (confidence=0.85)
+- LOCATION: 'Ashford' (confidence=0.85)
+- LOCATION: 'NC' (confidence=0.85)
+- PERSON: 'Kingsley Hearth Restaurant\n•' (confidence=0.85)
+- PERSON: 'Kingsley Row' (confidence=0.85)
+- PERSON: 'Kingsley Neighborhood' (confidence=0.85)
+- PERSON: 'Kingsley' (confidence=0.85)
+- DATE_TIME: 'May 28' (confidence=0.85)
+- DATE_TIME: '28104' (confidence=0.85)
+- DATE_TIME: 'February 18' (confidence=0.85)
+- PERSON: 'Marcus J. Halden\n• Company/Developer' (confidence=0.85)
+- LOCATION: 'Larkspur' (confidence=0.85)
+- LOCATION: 'Huntington Neighborhood' (confidence=0.85)
+- PERSON: 'Larkspur Ofﬁce' (confidence=0.85)
+- DATE_TIME: 'January 12' (confidence=0.85)
+- DATE_TIME: '8:00 AM – 7:00 PM' (confidence=0.85)
+- LOCATION: 'VA' (confidence=0.85)
+
+
+
+--------------------------------------------------------------------------------
+ANSWER
+--------------------------------------------------------------------------------
+Yes, construction permits were approved for restaurants in the Maplewood and [REDACTED PERSON] neighborhoods. The Maplewood QuickBite Restaurant (fast-food) and the [REDACTED PERSON] Hearth Restaurant (full-service) both received approved permits.
+
+[completed in 5.8s]
